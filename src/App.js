@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import "./App.css";
 import MovieComponent from "./components/movies";
 import NavBar from "./components/navbar";
 import { Route, Switch, Redirect } from "react-router-dom";
 import CustomerComponent from "./components/customers";
 import RentalComponent from "./components/rentals";
 import NotFound from "./components/not-found";
+import MovieForm from './components/movieform';
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -15,11 +16,13 @@ class App extends Component {
         <div className="App">
           <main className="container">
             <Switch>
+              <Route path="/movies/:id" component={MovieForm} />
               <Route path="/movies" component={MovieComponent} />
               <Route path="/customers" component={CustomerComponent} />
               <Route path="/rentals" component={RentalComponent} />
               <Route path="/not-found" component={NotFound} />
-              <Route path="/" exact component={MovieComponent} />
+              {/* <Route path="/" exact component={MovieComponent} /> */}
+              <Redirect from="/" exact to="/movies"></Redirect>
               <Redirect to="/not-found" />
             </Switch>
           </main>
