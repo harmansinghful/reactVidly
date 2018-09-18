@@ -1,11 +1,11 @@
 import React from "react";
 
-const Like = ({onClick}) => {
+const Like = props => {
   let classes = "clickable fa fa-heart";
   if (!props.liked) classes += "-o";
   return (
     <i
-      onClick={onClick}
+      onClick={props.onClick}
       className={classes}
     />
   );
