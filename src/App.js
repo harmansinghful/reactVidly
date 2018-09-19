@@ -5,8 +5,9 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import CustomerComponent from "./components/customers";
 import RentalComponent from "./components/rentals";
 import NotFound from "./components/not-found";
-import MovieForm from './components/movieform';
+import MovieForm from "./components/movieform";
 import "./App.css";
+import LoginForm from "./components/loginForm";
 
 class App extends Component {
   render() {
@@ -16,13 +17,14 @@ class App extends Component {
         <div className="App">
           <main className="container">
             <Switch>
+              <Route path="/login" component={LoginForm} />
               <Route path="/movies/:id" component={MovieForm} />
               <Route path="/movies" component={MovieComponent} />
               <Route path="/customers" component={CustomerComponent} />
               <Route path="/rentals" component={RentalComponent} />
               <Route path="/not-found" component={NotFound} />
               {/* <Route path="/" exact component={MovieComponent} /> */}
-              <Redirect from="/" exact to="/movies"></Redirect>
+              <Redirect from="/" exact to="/movies" />
               <Redirect to="/not-found" />
             </Switch>
           </main>
